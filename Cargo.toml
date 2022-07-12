@@ -1,0 +1,24 @@
+[package]
+name = "rpi_ws281x-c"
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/DoumanAsh/rpi_ws281x-c"
+readme = "README.md"
+license = "BSD-2-Clause"
+keywords = ["ws281x", "rpi", "pi", "raspberry"]
+categories = ["embedded", "hardware-support"]
+description = "Wrapper for rpi_ws281x C library"
+include = [
+    "**/*.rs",
+    "**/*.c",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE"
+]
+
+[dependencies.rpi_ws281x-sys]
+version = "0.1.3"
+
+[dependencies.libc]
+version = "0.2"
+default-features = false
