@@ -267,6 +267,14 @@ impl DriverBuilder {
         self
     }
 
+    #[inline]
+    ///Sets DMA channel number to use
+    pub const fn dma(mut self, dma_num: u8) -> Self {
+        self.dma_channel = dma_num;
+        self
+    }
+
+
     ///Sets first channel
     pub const fn channel1(mut self, channel: Channel) -> Self {
         //PWM1 must be used as channel 2 only
