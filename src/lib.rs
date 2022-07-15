@@ -303,7 +303,7 @@ impl DriverBuilder {
 
     #[inline]
     pub fn build(self) -> Result<Driver, ErrorCode> {
-        let inner = bindings::ws2811_t {
+        let mut inner = bindings::ws2811_t {
             render_wait_time: 0,
             device: core::ptr::null_mut(),
             rpi_hw: core::ptr::null(),
@@ -312,9 +312,16 @@ impl DriverBuilder {
             channel: self.channel,
         };
 
-        Ok(Driver {
-            inner,
-        })
+        let result = unsafe {
+            bindings::ws2811_init(&mut inner)
+        };
+
+        match result {
+            ErrorCode::WS2811_SUCCESS => Ok(Driver {
+                inner,
+            }),
+            error => Err(error),
+        }
     }
 }
 
