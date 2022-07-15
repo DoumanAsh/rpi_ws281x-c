@@ -157,6 +157,12 @@ impl Channel {
     }
 
     #[inline]
+    ///Get channel's brightness.
+    pub fn get_brightness(&self) -> u8 {
+        self.0.brightness
+    }
+
+    #[inline]
     ///Changes channel's brightness.
     pub fn change_brightness(&mut self, brightness: u8) {
         self.0.brightness = brightness;
