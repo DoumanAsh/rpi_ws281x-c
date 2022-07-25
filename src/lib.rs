@@ -284,8 +284,8 @@ impl DriverBuilder {
     ///Sets first channel
     pub const fn channel1(mut self, channel: Channel) -> Self {
         //PWM1 must be used as channel 2 only
-        debug_assert!(channel.0.gpionum != PwmPin::Pwm1_1 as i32);
-        debug_assert!(channel.0.gpionum != PwmPin::Pwm1_2 as i32);
+        debug_assert!(channel.0.gpionum != PwmPin::Pwm0_1 as i32);
+        debug_assert!(channel.0.gpionum != PwmPin::Pwm0_2 as i32);
 
         self.channel[0] = channel.0;
         self
@@ -294,8 +294,7 @@ impl DriverBuilder {
     ///Sets second channel
     pub const fn channel2(mut self, channel: Channel) -> Self {
         //PWM1 must be used as channel 2 only
-        debug_assert!(channel.0.gpionum == PwmPin::Pwm1_1 as i32);
-        debug_assert!(channel.0.gpionum == PwmPin::Pwm1_2 as i32);
+        debug_assert!(channel.0.gpionum == PwmPin::Pwm1_1 as i32 || channel.0.gpionum == PwmPin::Pwm1_2 as i32);
 
         self.channel[1] = channel.0;
         self
