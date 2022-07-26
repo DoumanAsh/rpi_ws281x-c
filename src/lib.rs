@@ -424,6 +424,11 @@ impl Driver {
             }
         }
     }
+
+    ///Accesses underlying driver structure
+    pub const fn as_inner(&self) -> &bindings::ws2811_t {
+        &self.inner
+    }
 }
 
 impl Drop for Driver {
